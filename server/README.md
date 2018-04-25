@@ -1,2 +1,1 @@
-Unzip ElasticSearch here
-
+Download and unzip ElasticSearch into this directory. 
