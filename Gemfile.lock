@@ -1,0 +1,56 @@
+GIT
+  remote: git://github.com/theodi/openactive.rb
+  revision: 17fb014a4aca6e0cf003e9da17fa8e4ef9579cac
+  specs:
+    openactive (0.0.1)
+      json
+      rest-client
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    domain_name (0.5.20170404)
+      unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.2.1)
+    elasticsearch (5.0.4)
+      elasticsearch-api (= 5.0.4)
+      elasticsearch-transport (= 5.0.4)
+    elasticsearch-api (5.0.4)
+      multi_json
+    elasticsearch-transport (5.0.4)
+      faraday
+      multi_json
+    faraday (0.13.1)
+      multipart-post (>= 1.2, < 3)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    json (2.1.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
+    multi_json (1.12.2)
+    multipart-post (2.0.0)
+    netrc (0.11.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dotenv
+  elasticsearch
+  json
+  openactive!
+  rest-client
+
+RUBY VERSION
+   ruby 2.4.0p0
+
+BUNDLED WITH
+   1.14.6

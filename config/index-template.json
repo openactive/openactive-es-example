@@ -1,0 +1,9 @@
+{
+    "template": "oa-*",
+    "mappings": {
+      "opp": {
+        "properties": {
+        }
+      }
+    }
+}

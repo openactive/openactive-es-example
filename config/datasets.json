@@ -1,0 +1,102 @@
+{
+  "goodgym-oa.github.io": {
+    "title": "GoodGym Sessions",
+    "data_url": "https://www.goodgym.org/api/happenings",
+    "index": true
+  },
+  "lawntennisassociation.github.io": {
+    "title": "LTA Participation Campaigns ",
+    "data_url": "https://api.clubspark.uk/odi/public/courses",
+    "index": false
+  },
+  "opensessions.github.io": {
+    "title": "Open Sessions",
+    "data_url": "https://app.opensessions.io/api/rdpe/sessions",
+    "index": false
+  },
+  "playwaze.github.io": {
+    "title": "Playwaze Courses & Sessions",
+    "data_url": "https://playwaze.com/Webservices/Playwazeservice.svc/Groupplay/GetOpenActiveData",
+    "index": false
+  },
+  "britishcycling-oa.github.io": {
+    "title": "British Cycling Let's Ride Sessions",
+    "data_url": "http://api.letsride.co.uk/public/v1/rides",
+    "index": false
+  },
+  "makesweat.github.io": {
+    "title": "All Makesweat sessions",
+    "data_url": "https://makesweat.com/service/openactive.php",
+    "index": true
+  },
+  "visionrcl.github.io": {
+    "title": "Vision Redbridge Culture & Leisure Sessions",
+    "data_url": "https://vision-rcl-openactive.herokuapp.com/",
+    "index": true
+  },
+  "openactive-datasite": {
+    "title": "Bookwhen Fitness Event Data",
+    "data_url": "https://bookwhen.com/api/openactive/event_types",
+    "index": true
+  },
+  "gll-better.github.io": {
+    "title": "Better activities",
+    "data_url": "https://www.better.org.uk/odi/sessions.json",
+    "index": true
+  },
+  "activenewham.github.io": {
+    "title": "activeNewham Sessions",
+    "data_url": "https://activenewham-openactive.herokuapp.com",
+    "index": true
+  },
+  "tabletennis365.github.io": {
+    "title": "Table tennis club data",
+    "data_url": "https://www.tabletennis365.com/TableTennisEngland/API/OpenActive/v1/Clubs",
+    "index": false
+  },
+  "gomammoth.github.io": {
+    "title": "GO Mammoth Sports and Fitness Activities",
+    "data_url": "https://reports.gomammoth.co.uk/api/OpenData/Leagues?afterTimestamp=0",
+    "index": false
+  },
+  "dataset-site-generator": {
+    "title": "Flexi Digital Open Session Data",
+    "data_url": "https://open.flexidigital.co.uk/oa",
+    "index": false
+  },
+  "fusion-lifestyle.github.io": {
+    "title": "Fusion Lifestyle Sessions",
+    "data_url": "https://fusion-lifestyle-openactive.azurewebsites.net/api/sessions",
+    "index": true
+  },
+  "data.pingengland.co.uk": {
+    "title": "Ping! Table Locations",
+    "data_url": "http://www.pingengland.co.uk/realtime.php",
+    "index": false
+  },
+  "salfordcommunityleisure.github.io": {
+    "title": "Salford Community Leisure sessions ",
+    "data_url": "https://salford-lc-openactive.herokuapp.com",
+    "index": false
+  },
+  "leisureworldcolchester.github.io": {
+    "title": "Leisure World Colchester Sessions",
+    "data_url": "https://lw-colchester-openactive.herokuapp.com",
+    "index": true
+  },
+  "athliit.github.io": {
+    "title": "Athliit Events",
+    "data_url": "https://api.athliit.com/openactive/events",
+    "index": false
+  },
+  "britishorienteering.github.io": {
+    "title": "British Orienteering Fixtures",
+    "data_url": "https://www.britishorienteering.org.uk/fullfixturesjson.php",
+    "index": false
+  },
+  "ourparks.github.io": {
+    "title": "Our Parks Classes",
+    "data_url": "https://ourparks.org.uk/getSessions",
+    "index": false
+  }
+}
