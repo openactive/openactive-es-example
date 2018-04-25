@@ -2,7 +2,7 @@
   "goodgym-oa.github.io": {
     "title": "GoodGym Sessions",
     "data_url": "https://www.goodgym.org/api/happenings",
-    "index": true
+    "index": false
   },
   "lawntennisassociation.github.io": {
     "title": "LTA Participation Campaigns ",
@@ -11,7 +11,7 @@
   },
   "opensessions.github.io": {
     "title": "Open Sessions",
-    "data_url": "https://app.opensessions.io/api/rdpe/sessions",
+    "data_url": "https://opensessions.io/api/Session/GetSessionsForOpenActive",
     "index": false
   },
   "playwaze.github.io": {
@@ -27,27 +27,27 @@
   "makesweat.github.io": {
     "title": "All Makesweat sessions",
     "data_url": "https://makesweat.com/service/openactive.php",
-    "index": true
+    "index": false
   },
   "visionrcl.github.io": {
     "title": "Vision Redbridge Culture & Leisure Sessions",
     "data_url": "https://vision-rcl-openactive.herokuapp.com/",
-    "index": true
+    "index": false
   },
   "openactive-datasite": {
     "title": "Bookwhen Fitness Event Data",
     "data_url": "https://bookwhen.com/api/openactive/event_types",
-    "index": true
+    "index": false
   },
   "gll-better.github.io": {
     "title": "Better activities",
     "data_url": "https://www.better.org.uk/odi/sessions.json",
-    "index": true
+    "index": false
   },
   "activenewham.github.io": {
     "title": "activeNewham Sessions",
     "data_url": "https://activenewham-openactive.herokuapp.com",
-    "index": true
+    "index": false
   },
   "tabletennis365.github.io": {
     "title": "Table tennis club data",
@@ -59,6 +59,11 @@
     "data_url": "https://reports.gomammoth.co.uk/api/OpenData/Leagues?afterTimestamp=0",
     "index": false
   },
+  "sportstarta.github.io": {
+    "title": "SportStarta Open Activities",
+    "data_url": "http://www.devapi.lewishamparklife.co.uk/api/games/get_active_single_game",
+    "index": false
+  },
   "dataset-site-generator": {
     "title": "Flexi Digital Open Session Data",
     "data_url": "https://open.flexidigital.co.uk/oa",
@@ -67,7 +72,7 @@
   "fusion-lifestyle.github.io": {
     "title": "Fusion Lifestyle Sessions",
     "data_url": "https://fusion-lifestyle-openactive.azurewebsites.net/api/sessions",
-    "index": true
+    "index": false
   },
   "data.pingengland.co.uk": {
     "title": "Ping! Table Locations",
