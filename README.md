@@ -1,4 +1,4 @@
-#Indexing Opportunity Data Using Elastic Search
+# Indexing Opportunity Data Using Elastic Search
 
 This repository contains a simple demonstration of harvesting and indexing 
 opportunity data, published as part of the OpenActive project.
