@@ -1,12 +1,12 @@
 # Indexing Opportunity Data Using Elastic Search
 
-This repository contains a simple demonstration of harvesting and indexing opportunity data, published as 
-part of the [OpenActive](https://openactive.io) initiative.
+This repository contains a simple demonstration of harvesting and indexing [opportunity data](http://status.openactive.io/), published as part of the [OpenActive](https://openactive.io) initiative.
 
 The example uses a set of simple Ruby scripts to drive harvesting of live data feeds and indexes the data in 
 [ElasticSearch](https://www.elastic.co/) which is an open source search engine.
 
 The code in this project is published under an open licence and you are free to adapt and reuse it as you see fit.
+
 It is primarily intended as simple example of harvesting and indexing data so isn't production strength. However this 
 setup has been successfully used to do some simple analysing and reporting on published data.
 
@@ -83,8 +83,8 @@ rake es:start
 
 This just runs `./server/bin/elasticsearch` so you can run that directly if you prefer.
 
-You can test its running by visiting `http://localhost:9200/`. You should see a JSON response from you local 
-server.
+You can test its running by visiting `http://localhost:9200/`. You should see a JSON response from your local 
+ElasticSearch server.
 
 You can Ctrl-C to shutdown the server at any time. But it needs to be running for the following steps. 
 
@@ -132,6 +132,8 @@ If you want to delete just a single index, then run this script:
 ruby bin/delete-indexes <dataset-key>
 ```
 
+Where `<dataset-key>` is one of the keys in `configi/datasets.json`.
+
 ### Aside: Configuring indexes
 
 By default ElasticSearch is happy to store any chunk of JSON that you throw at it. We're taking advantage of that in 
@@ -149,10 +151,9 @@ This example uses a basic template which can be found in `config/index-template.
  
 If you want to play with indexing templates then you can revise this, rebuild your indexes and re-harvest data.
 
-## Crawl feeds
+## Crawl the data
 
-The script that will harvest the opportunity data is `bin/harvest.rb`. It uses the [OpenActive](https://github.com/openactive/openactive.rb) 
-ruby gem to walk through feeds.
+The script that will harvest the opportunity data is `bin/harvest.rb`. It uses the [OpenActive](https://github.com/openactive/openactive.rb) ruby gem to walk through feeds.
 
 You can run it using the following command:
 
@@ -163,6 +164,9 @@ rake harvest:all
 This will walk through every dataset that you have configured for indexing, paging through the results from the 
 [RPDE](https://www.openactive.io/realtime-paged-data-exchange/) feeds and submitting the data to ElasticSearch.
 
+The indexing uses the ElasticSearch bulk update API to make the indexing more efficient. It submits an entire 
+page of data from a feed at a time.
+
 ### Aside: improving the harvester
 
 At the moment the harvesting is very simplistic:
@@ -171,12 +175,11 @@ At the moment the harvesting is very simplistic:
 * It doesn't process deletions
 * It only indexes the first 2000 items of any feed
 * It indexes datasets in turn, rather than in parallel
+* It doesn't process any of the received data, e.g. in order to ensure its in a sensible shape for your need.
 
-For a production application you'll need to do both of those things. The `bin/harvest.rb` script has some comments that 
-indicate what you would need to change to improve the scripts. Feel free to submit a pull request!
+For a production application you'll need to think through all of those things.
 
-The indexing uses the ElasticSearch bulk update API to make the indexing more efficient. It submits an entire 
-page of data from a feed at a time.
+The `bin/harvest.rb` script is liberally commented to indicate what you might need to change to improve the scripts. Feel free to submit a pull request!
 
 ## Test the search
 
