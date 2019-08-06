@@ -32,7 +32,7 @@ Go to [the Elastic Search download page](https://www.elastic.co/downloads/elasti
 of the latest release.
 
 You will need to unzip the file into the `server` sub-directory of this project. You should ignore the 
-main sub-directory in the zip file, you just need to extra the main project folders.
+main sub-directory in the zip file, you just need to extract the main project folders.
 
 You should end up with a `server` directory that looks something like:
 
