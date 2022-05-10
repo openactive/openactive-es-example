@@ -6,6 +6,6 @@ gem 'elasticsearch'
 gem 'rest-client'
 
 gem 'dotenv'
-gem 'openactive', :git => 'git://github.com/theodi/openactive.rb'
+gem 'openactive', :git => 'https://github.com/theodi/openactive.rb'
 
 
