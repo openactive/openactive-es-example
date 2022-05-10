@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/theodi/openactive.rb
+  remote: https://github.com/theodi/openactive.rb
   revision: 17fb014a4aca6e0cf003e9da17fa8e4ef9579cac
   specs:
     openactive (0.0.1)
