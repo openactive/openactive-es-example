@@ -74,8 +74,17 @@ feed. So edit the following section in `config/datasets.json` so that the `index
 
 ## Start ElasticSearch
 
-We then need to startup ElasticSearch so we can configure some indexes to hold the data. In a separate terminal 
-window, from the project directory you can start ElasticSearch by running the following command:
+By default, ElasticSearch starts with SSL security restrictions configured in `config/elasticsearch.yml`. For this example, these can be set to `false` rather than `true` as below:
+
+```
+# Enable encryption for HTTP API client connections, such as Kibana, Logstash, and Agents
+xpack.security.http.ssl:
+  enabled: false
+  keystore.path: certs/http.p12
+```
+
+We then need to startup ElasticSearch so we can configure some indexes to hold the data. 
+**Open a separate terminal window**, cd to the project directory and start ElasticSearch by running the following command:
 
 ```
 rake es:start
@@ -83,8 +92,7 @@ rake es:start
 
 This just runs `./server/bin/elasticsearch` so you can run that directly if you prefer.
 
-You can test its running by visiting `http://localhost:9200/`. You should see a JSON response from your local 
-ElasticSearch server.
+Test it is running by visiting `http://localhost:9200/`. You may have to log in with the user 'elastic' and the password shown in the terminal log. You should see a JSON response from your local ElasticSearch server.
 
 You can Ctrl-C to shutdown the server at any time. But it needs to be running for the following steps. 
 
@@ -104,7 +112,7 @@ See the [elasticsearch-ruby configuration](http://www.rubydoc.info/gems/elastics
 
 ## Create Elastic Search Indexes
 
-Run the following to create the ElasticSearch indexes:
+In the original terminal, run the following to create the ElasticSearch indexes:
 
 ```
 rake es:indexes
