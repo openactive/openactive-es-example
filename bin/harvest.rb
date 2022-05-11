@@ -37,7 +37,7 @@ datasets.each.each do |id, dataset|
             #add each item to the update, using the appropriate index
             #we use the unique id for the item in the feed as the document id
             #TODO: we should be checking the state of the item and processing deletes here
-            body << { index: { _index: "#{INDEX_PREFIX}-#{id}", _type: "opp", _id: item["id"] } }
+            body << { index: { _index: "#{INDEX_PREFIX}-#{id}", _id: item["id"] } }
 
             #here we just add the data about the item that was included in the feed
             #in a production application you will probably want to process this data to ensure that
