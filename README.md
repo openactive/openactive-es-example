@@ -14,7 +14,7 @@ setup has been successfully used to do some simple analysing and reporting on pu
 
 You will need to install:
 
-* Ruby -- this was built and tested using Ruby 2.4.0 but should work on later rubies)
+* Ruby -- this was built with Ruby 2.4.0 and updated and tested recently with Ruby 2.6.10
 * Bundler -- to install other ruby dependencies
 * Java 1.8+ -- ElasticSearch is a java application
 
