@@ -61,13 +61,13 @@ rake prepare:config
 This downloads the current list of published datasets and stores it in `config/datasets.json`.
 
 By default indexing is disabled for all datasets, you will need to edit `config/datasets.json` to switch on 
-whichever datasets you want to try indexing. We suggest trying using the Leisure World Colchester data as its a small 
+whichever datasets you want to try indexing. We suggest trying using the British Triathlon data as its a relatively small 
 feed. So edit the following section in `config/datasets.json` so that the `index` key is `true` rather than `false`.
 
 ```
-  "leisureworldcolchester.github.io": {
-    "title": "Leisure World Colchester Sessions",
-    "data_url": "https://lw-colchester-openactive.herokuapp.com",
+  "britishtriathlon.github.io": {
+    "title": "British Triathlon Events",
+    "data_url": "https://api.britishtriathlon.org/openactive/v1/events",
     "index": true
   }
 ```
@@ -200,33 +200,16 @@ http://localhost:9200/_stats
 ```
 
 Then ElasticSearch will dump the current state of all indexes, including how many documents are in each. You can also 
-ask for index specific statistics. So, assuming you have indexes Leisure World Colchester, then if you visit this URL:
+ask for index specific statistics. So, assuming you have indexed British Triathlon, then if you visit this URL:
 
 ```
-http://localhost:9200/oa-leisureworldcolchester.github.io/_stats
+http://localhost:9200/oa-britishtriathlon.github.io/_stats
 ```
 
 Then you should get stats for just that index. You should see something like this:
 
 ```
-{
-  "_shards": {
-    ...
-  },
-  "_all": {
-    ...
-  },
-  "indices": {
-    "oa-leisureworldcolchester.github.io": {
-      "primaries": {
-        "docs": {
-          "count": 156,
-          "deleted": 0
-        },
-        ...
-    }
-   }   
-}
+{"_shards":{"total":2,"successful":1,"failed":0},"_all":{"primaries":{"docs":{"count":1825,"deleted":0}...
 ```
 
 Which tells you that 156 records have been indexed.
@@ -234,7 +217,7 @@ Which tells you that 156 records have been indexed.
 You can also visit the `_search` endpoint to see all the docs:
 
 ```
-http://localhost:9200/oa-leisureworldcolchester.github.io/_search
+http://localhost:9200/oa-britishtriathlon.github.io/_search
 ```
 
 We suggest reading [the ElasticSearch documentation on their search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/_exploring_your_data.html) 
