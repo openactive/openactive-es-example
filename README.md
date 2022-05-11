@@ -212,7 +212,7 @@ Then you should get stats for just that index. You should see something like thi
 {"_shards":{"total":2,"successful":1,"failed":0},"_all":{"primaries":{"docs":{"count":1825,"deleted":0}...
 ```
 
-Which tells you that 156 records have been indexed.
+Which tells you that 1825 records have been indexed.
 
 You can also visit the `_search` endpoint to see all the docs:
 
