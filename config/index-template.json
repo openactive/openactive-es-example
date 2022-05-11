@@ -1,9 +1,12 @@
 {
-    "template": "oa-*",
-    "mappings": {
-      "opp": {
-        "properties": {
-        }
-      }
+  "index_patterns": [
+    "oa-*"
+  ],
+  "mappings": {
+    "properties": {
+     "name" : {
+       "type" : "text"
+     }
     }
-}
+  }
+ }
