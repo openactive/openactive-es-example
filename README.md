@@ -3,7 +3,7 @@
 This repository contains a simple demonstration of harvesting and indexing [opportunity data](http://status.openactive.io/), published as part of the [OpenActive](https://openactive.io) initiative.
 
 The example uses a set of simple Ruby scripts to drive harvesting of live data feeds and indexes the data in 
-[ElasticSearch](https://www.elastic.co/) which is an open source search engine.
+[ElasticSearch](https://www.elastic.co/) and Kibana, open source search tools. 
 
 The code in this project is published under an open licence and you are free to adapt and reuse it as you see fit.
 
@@ -35,7 +35,7 @@ cd openactive-es-example
 bundle install
 ```
 
-## Download and unzip Elastic Search
+## Download and unzip Elastic Search and Kibana
 
 Go to [the Elastic Search download page](https://www.elastic.co/downloads/elasticsearch) and download the zip file 
 of the latest release.
@@ -52,6 +52,11 @@ server/modules
 server/logs
 server/plugins
 ```
+
+Go to the kibana download page and download the latest version for your platform.
+Unzip this and move the contents into the kibana subfolder.
+
+
 
 ## Update the list of datasets
 
@@ -83,13 +88,6 @@ feed. So edit the following section in `config/datasets.json` so that the `index
 
 ## Start ElasticSearch
 
-By default, ElasticSearch starts with security restrictions configured in `config/elasticsearch.yml`. For production applications, disabling security is not recommended but for this example, these can be set to `false` rather than `true` as below:
-
-```
-# Enable security features
-xpack.security.enabled: false
-```
-
 We then need to startup ElasticSearch so we can configure some indexes to hold the data.
 
 
@@ -101,7 +99,7 @@ rake es:start
 
 This just runs `./server/bin/elasticsearch` so you can run that directly if you prefer.
 
-Make a note of the password for the 'elastic' user.
+Make a note of the password for the 'elastic' user and the enrollement token for kibana.
 
 
 Test it is running by visiting `http://localhost:9200/`. Log in with the user 'elastic' and the password shown in the terminal log. You should see a JSON response from your local ElasticSearch server.
