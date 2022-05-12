@@ -14,15 +14,24 @@ setup has been successfully used to do some simple analysing and reporting on pu
 
 You will need to install:
 
-* Ruby -- this was built with Ruby 2.4.0 and updated and tested recently with Ruby 2.6.10
+* Ruby -- this was built with Ruby 2.4.0 and updated recently with the nearest stable version Ruby 2.6.10
 * Bundler -- to install other ruby dependencies
 * Java 1.8+ -- ElasticSearch is a java application
 
-## Grab this code
-
-Clone this repo to your machine, then install the ruby dependencies:
+You can use a software verison management tool like chruby to install different versions of ruby and switch between them as needed. If chruby is installed, you can run the following to switch ruby versions and confirm you are using 2.6.10:
 
 ```
+chruby 2.6.10
+ruby -v
+```
+
+## Grab this code
+
+To clone this repo to your machine and install the ruby dependencies, run the following lines in a terminal:
+
+```
+git clone https://github.com/howaskew/openactive-es-example.git
+cd openactive-es-example
 bundle install
 ```
 
@@ -31,8 +40,7 @@ bundle install
 Go to [the Elastic Search download page](https://www.elastic.co/downloads/elasticsearch) and download the zip file 
 of the latest release.
 
-You will need to unzip the file into the `server` sub-directory of this project. You should ignore the 
-main sub-directory in the zip file, you just need to extract the main project folders.
+Unzip this file and copy the contents into the `server` sub-directory of the openactive-es-example directory. 
 
 You should end up with a `server` directory that looks something like:
 
@@ -41,7 +49,8 @@ server/bin
 server/config
 server/lib
 server/modules
-...etc
+server/logs
+server/plugins
 ```
 
 ## Update the list of datasets
@@ -74,16 +83,16 @@ feed. So edit the following section in `config/datasets.json` so that the `index
 
 ## Start ElasticSearch
 
-By default, ElasticSearch starts with SSL security restrictions configured in `config/elasticsearch.yml`. For this example, these can be set to `false` rather than `true` as below:
+By default, ElasticSearch starts with security restrictions configured in `config/elasticsearch.yml`. For production applications, disabling security is not recommended but for this example, these can be set to `false` rather than `true` as below:
 
 ```
-# Enable encryption for HTTP API client connections, such as Kibana, Logstash, and Agents
-xpack.security.http.ssl:
-  enabled: false
-  keystore.path: certs/http.p12
+# Enable security features
+xpack.security.enabled: false
 ```
 
-We then need to startup ElasticSearch so we can configure some indexes to hold the data. 
+We then need to startup ElasticSearch so we can configure some indexes to hold the data.
+
+
 **Open a separate terminal window**, cd to the project directory and start ElasticSearch by running the following command:
 
 ```
@@ -92,11 +101,14 @@ rake es:start
 
 This just runs `./server/bin/elasticsearch` so you can run that directly if you prefer.
 
-Test it is running by visiting `http://localhost:9200/`. You may have to log in with the user 'elastic' and the password shown in the terminal log. You should see a JSON response from your local ElasticSearch server.
+Make a note of the password for the 'elastic' user.
+
+
+Test it is running by visiting `http://localhost:9200/`. Log in with the user 'elastic' and the password shown in the terminal log. You should see a JSON response from your local ElasticSearch server.
 
 You can Ctrl-C to shutdown the server at any time. But it needs to be running for the following steps. 
 
-ElasticSearch is configured via its API so you need to have an instance available.
+ElasticSearch is configured via its API so you need to have a running nstance available.
 
 ### Aside: Using a different ElasticSearch Server
 
@@ -112,7 +124,7 @@ See the [elasticsearch-ruby configuration](http://www.rubydoc.info/gems/elastics
 
 ## Create Elastic Search Indexes
 
-In the original terminal, run the following to create the ElasticSearch indexes:
+**In the original terminal window**, run the following to create the ElasticSearch indexes:
 
 ```
 rake es:indexes
