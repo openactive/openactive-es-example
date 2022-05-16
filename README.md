@@ -53,11 +53,6 @@ server/logs
 server/plugins
 ```
 
-Go to the kibana download page and download the latest version for your platform.
-Unzip this and move the contents into the kibana subfolder.
-
-
-
 ## Update the list of datasets
 
 The ruby scripts that manage the indexes and harvest the data are driven off a list of published datasets. These 
@@ -97,20 +92,48 @@ We then need to startup ElasticSearch so we can configure some indexes to hold t
 rake es:start
 ```
 
-This just runs `./server/bin/elasticsearch` so you can run that directly if you prefer.
+(This just runs `./server/bin/elasticsearch` so you can run that directly if you prefer.)
 
-Make a note of the password for the 'elastic' user and the enrollement token for kibana.
+Make a note of the password for the 'elastic' user and the HTTP CA certificate SHA-256 fingerprint in the output. You may have to scroll back up to see it.
+
+Edit the file `bin/connect.rb`. Paste in the password and certificate details from the console output and save this file. 
+
+You can test the elasticsearch instance is running by visiting `https://localhost:9200/`.
+
+You may see a certifcate error alert, depending upon your browser, which you can bypass e.g. click Advanced, then select the option to Proceed.
+
+Log in with the user 'elastic' and the password shown in the terminal log.   
+
+If the instance is running, you should see a JSON response from your local ElasticSearch server, something like:
+
+```
+{
+  "name" : "MacBook-Pro.local",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "XZB1wYYJTX3KNltDMVA",
+  "version" : {
+    "number" : "8.2.0",
+    "build_flavor" : "default",
+    "build_type" : "tar",
+    "build_hash" : "b174af62e8Sf4aDDc4d25gf875e93812b9282c5",
+    "build_date" : "2022-04-20T10:35:10.180408517Z",
+    "build_snapshot" : false,
+    "lucene_version" : "9.1.0",
+    "minimum_wire_compatibility_version" : "7.17.0",
+    "minimum_index_compatibility_version" : "7.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
 
 
-Test it is running by visiting `http://localhost:9200/`. Log in with the user 'elastic' and the password shown in the terminal log. You should see a JSON response from your local ElasticSearch server.
+You can Ctrl-C to shutdown the server at any time - but it needs to be running for the following steps. 
 
-You can Ctrl-C to shutdown the server at any time. But it needs to be running for the following steps. 
-
-ElasticSearch is configured via its API so you need to have a running nstance available.
+ElasticSearch is configured via its API so you need to have a irunning nstance available.
 
 ### Aside: Using a different ElasticSearch Server
 
-The scripts all assume that they are working with an ElasticSearch instance available at `http://localhost:9200/`.
+The scripts all assume that they are working with an ElasticSearch instance available at `https://localhost:9200/`.
 If you want to use an alternative server, then for the moment you'll need to edit the scripts in the `bin` directory to 
 revise the following lines:
 
@@ -206,14 +229,14 @@ We can now check to see that we have indexed some data.
 If you visit this URL:
 
 ```
-http://localhost:9200/_stats
+https://localhost:9200/_stats
 ```
 
 Then ElasticSearch will dump the current state of all indexes, including how many documents are in each. You can also 
 ask for index specific statistics. So, assuming you have indexed British Triathlon, then if you visit this URL:
 
 ```
-http://localhost:9200/oa-britishtriathlon.github.io/_stats
+https://localhost:9200/oa-britishtriathlon.github.io/_stats
 ```
 
 Then you should get stats for just that index. You should see something like this:
@@ -227,7 +250,7 @@ Which tells you that 1825 records have been indexed.
 You can also visit the `_search` endpoint to see all the docs:
 
 ```
-http://localhost:9200/oa-britishtriathlon.github.io/_search
+https://localhost:9200/oa-britishtriathlon.github.io/_search
 ```
 
 We suggest reading [the ElasticSearch documentation on their search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/_exploring_your_data.html) 
