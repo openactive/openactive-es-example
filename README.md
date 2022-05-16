@@ -3,7 +3,7 @@
 This repository contains a simple demonstration of harvesting and indexing [opportunity data](http://status.openactive.io/), published as part of the [OpenActive](https://openactive.io) initiative.
 
 The example uses a set of simple Ruby scripts to drive harvesting of live data feeds and indexes the data in 
-[ElasticSearch](https://www.elastic.co/) and Kibana, open source search tools. 
+[ElasticSearch](https://www.elastic.co/), an open source search tool. 
 
 The code in this project is published under an open licence and you are free to adapt and reuse it as you see fit.
 
@@ -102,7 +102,7 @@ You can test the elasticsearch instance is running by visiting `https://localhos
 
 You may see a certifcate error alert, depending upon your browser, which you can bypass e.g. click Advanced, then select the option to Proceed.
 
-Log in with the user 'elastic' and the password shown in the terminal log.   
+Log in with the user 'elastic' and the password noted earlier.
 
 If the instance is running, you should see a JSON response from your local ElasticSearch server, something like:
 
