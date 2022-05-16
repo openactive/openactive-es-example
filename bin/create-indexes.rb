@@ -4,7 +4,13 @@ Bundler.require :default
 
 INDEX_PREFIX="oa"
 
-client = Elasticsearch::Client.new
+require_relative 'connect'
+
+client = Elasticsearch::Client.new(
+  host: "https://elastic:#{ELASTIC_PASSWORD}@localhost:9200",
+  transport_options: { ssl: { verify: false } },
+  ca_fingerprint: CERT_FINGERPRINT
+)
 
 #Create index template, new templates will follow this pattern
 template = JSON.parse( File.read( ARGV[1] ) )
