@@ -35,7 +35,7 @@ cd openactive-es-example
 bundle install
 ```
 
-## Download and unzip Elastic Search and Kibana
+## Download and unzip Elastic Search
 
 Go to [the Elastic Search download page](https://www.elastic.co/downloads/elasticsearch) and download the zip file 
 of the latest release.
