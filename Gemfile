@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
-ruby "2.4.0"
+ruby "2.6.10"
 
 gem 'json'
-gem 'elasticsearch'
+gem 'elasticsearch', '~> 8.2'
 gem 'rest-client'
 
 gem 'dotenv'
-gem 'openactive', :git => 'git://github.com/theodi/openactive.rb'
-
+gem 'openactive', :git => 'https://github.com/theodi/openactive.rb'
 

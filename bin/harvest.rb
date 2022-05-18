@@ -2,7 +2,13 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :default
 
-client = Elasticsearch::Client.new
+require_relative 'connect'
+
+client = Elasticsearch::Client.new(
+  host: "https://elastic:#{ELASTIC_PASSWORD}@localhost:9200",
+  transport_options: { ssl: { verify: false } },
+  ca_fingerprint: CERT_FINGERPRINT
+)
 
 #Parse the config/datasets.json file
 datasets = JSON.parse( File.read(ARGV[0]) )
@@ -37,7 +43,7 @@ datasets.each.each do |id, dataset|
             #add each item to the update, using the appropriate index
             #we use the unique id for the item in the feed as the document id
             #TODO: we should be checking the state of the item and processing deletes here
-            body << { index: { _index: "#{INDEX_PREFIX}-#{id}", _type: "opp", _id: item["id"] } }
+            body << { index: { _index: "#{INDEX_PREFIX}-#{id}", _id: item["id"] } }
 
             #here we just add the data about the item that was included in the feed
             #in a production application you will probably want to process this data to ensure that

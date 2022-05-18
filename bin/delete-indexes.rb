@@ -4,8 +4,13 @@ Bundler.require :default
 
 INDEX_PREFIX="oa"
 
-client = Elasticsearch::Client.new
+require_relative 'connect'
 
+client = Elasticsearch::Client.new(
+  host: "https://elastic:#{ELASTIC_PASSWORD}@localhost:9200",
+  transport_options: { ssl: { verify: false } },
+  ca_fingerprint: CERT_FINGERPRINT
+)
 datasets = JSON.parse( File.read(ARGV[0]) )
 
 datasets.keys.each do |dataset|
